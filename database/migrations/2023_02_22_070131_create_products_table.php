@@ -19,8 +19,6 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained('categories');
             $table->longText('description');
             $table->string('image');
-            $table->integer('size');
-            $table->string('color');
             $table->timestamps();
         });
     }

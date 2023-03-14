@@ -1,7 +1,9 @@
 @extends('admin.layouts.master')
 @section('content')
+@include('sweetalert::alert')
+
 <main class="page-content">
-<h2>Sửa thể loại</h2>
+<h2 class="offset-5">Sửa thể loại</h2>
 
 
 <div class="container">
@@ -19,7 +21,7 @@
               </div >
              <div class="col-12">
                <div class="d-grid">
-                 <button class="btn btn-primary" type="submit">Thêm thể loại</button>
+                 <button class="btn btn-primary" type="submit">Cập nhật thể loại</button>
 
                </div>
              </div>

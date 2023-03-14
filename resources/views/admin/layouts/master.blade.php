@@ -7,7 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>@yield('title')</title>
+  
+    
+    <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

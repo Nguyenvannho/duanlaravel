@@ -1,11 +1,28 @@
 @extends('admin.layouts.master')
 @section('content')
+@include('sweetalert::alert')
+
 <main class="page-content">
-        <h1>Danh sách thể loại</h1>
+        <h1 class="offset-4">Danh sách thể loại</h1>
         <div class="container">
             <table class="table">
                 <div class="col-6">
-                <a href="{{ route('category.edit') }}" class="btn btn-primary">Thêm mới</a>
+                    <form class="navbar-form navbar-left" action="{{route('category.search')}}" method="GET">
+                        @csrf
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="form-group">
+                                    <input type="text" name="search" class="form-control" placeholder="Search...">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-info">Tìm kiếm</button>
+                            </div>
+                        </div>
+                    </form>
+                    @if (Auth::user()->hasPermission('Category_create'))
+                <a href="{{ route('category.create') }}" class="btn btn-primary">Thêm mới</a>
+                @endif
                     </form>
                 </div>
                 <thead>
@@ -22,12 +39,19 @@
                             <th scope="row">{{ $key + 1 }}</th>
                             <td>{{ $team->name }}</td>
                             <td>
+                              
                                 <form  action="{{ route('category.destroy', $team->id) }}" method="POST">
-                                    @method('PUT')
+                                    @if (Auth::user()->hasPermission('Category_update'))
+                                    <a href="{{ route('category.edit', $team->id) }}" class="btn btn-primary">Sửa</a>
+                                    @endif
+                                     
+                                    @if (Auth::user()->hasPermission('Category_delete'))
+                                    <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Bạn có muốn xóa')">Xóa</button>
+                                    @endif
+                                    @method('DELETE')
                                     @csrf
-                                     <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Bạn có muốn xóa')">Xóa</button>
-                                    <a href="{{ route('category.edit', [$team->id]) }}" class="btn btn-primary">Sửa</a>
+                                    
                                 </form>
                             </td>
                         </tr>
@@ -36,6 +60,7 @@
 
                 </tbody>
             </table>
+            {{$categories->appends(request()->query())}}
         </div>
     </main>
 @endsection
