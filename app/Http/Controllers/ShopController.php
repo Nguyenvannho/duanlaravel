@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
 
 class ShopController extends Controller
 {
@@ -195,7 +197,9 @@ class ShopController extends Controller
         $customer->password = bcrypt($request->password);
 
         if ($request->password == $request->confirmpassword) {
+            alert()->success('Đăng ký tài khoản thành công!');
             $customer->save();
+            
             return redirect()->route('shop.index');
         } else {
             return redirect()->route('shop.index')->with($notification);
@@ -207,6 +211,20 @@ class ShopController extends Controller
     }
     public function checklogin(Request $request)
     {
+        // try {
+        //     $credentials = $request->only('email', 'password');
+        //     if (Auth::attempt($credentials)) {
+        //         // Đăng nhập thành công
+        //         return redirect()->intended('/dashboard');
+        //     } else {
+        //         throw new \Exception('Tài khoản hoặc mật khẩu không đúng');
+        //     }
+        // } catch (\Exception $e) {
+        //     return back()->withErrors(['email' => $e->getMessage()]);
+        // }
+        $notification = [
+            'message' => 'error',
+        ];
         $arr = [
             'email' => $request->email,
             'password' => $request->password
@@ -215,8 +233,12 @@ class ShopController extends Controller
             alert()->success('Đăng nhập trang shop thành công!');
             return redirect()->route('shop.index');
         } else {
-            return redirect()->route('shop.login');
+           alert()->error('Tài khoản hoặc mật khẩu không đúng, 
+           Vui lòng đăng nhập lại!');
+           return redirect()->route('shop.index');
+           
         }
+        
     }
     public function logout(Request $request)
     {
@@ -241,5 +263,24 @@ class ShopController extends Controller
     //         alert()->success('Xóa Đơn Hàng Thành Công!');
 
     //     }
+    public function quenmatkhau(Request $request)
+    {
+        $customer = Customer::where('email', $request->email)->first();
+        if ($customer) {
+            $pass = Str::random(6);
+            $customer->password = bcrypt($pass);
+            $customer->save();
+            $data = [
+                'name' => $customer->name,
+                'pass' => $pass,
+                'email' => $customer->email,
+            ];
+            Mail::send('shop.email.password', compact('data'), function ($email) use ($customer) {
+                $email->subject('Shop shop');
+                $email->to($customer->email, $customer->name);
+            });
+        }
+        return redirect()->route('shop.checklogin');
 
+}
 }

@@ -50,7 +50,7 @@ class GroupController extends Controller
         $group = new Group();
         $group->name = $request->name;
         $group->save();
-        alert()->success('Thêm nhân viên thành công!');
+        alert()->success('Thêm thành công!');
         return redirect()->route('group.index');
     }
 
@@ -84,7 +84,7 @@ class GroupController extends Controller
             'message' => 'Chỉnh Sửa Thành Công!',
             'alert-type' => 'success'
         ];
-        alert()->success('Cập nhật nhân viên thành công!');
+        alert()->success('Cập nhật thành công!');
 
         return redirect()->route('group.index');
     }

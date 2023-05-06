@@ -16,7 +16,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $items = Order::paginate(10);
+        $items = Order::paginate(5);
         return view('admin.orders.index', compact('items'));
         //
     }
@@ -103,7 +103,10 @@ class OrderController extends Controller
         if(!$search){
             return redirect()->route('product.index');
         }
-        $items = Order::where('name','LIKE','%'.$search.'%')->paginate(2);
+        $items = Order::join('customers', 'orders.customer_id', '=', 'customers.id')
+        ->where('name','LIKE','%'.$search.'%')
+        ->get();
+        // dd($items);
         return view('admin.orders.index',compact('items'));
       }
       public function exportOrder(){

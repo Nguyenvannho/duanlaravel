@@ -117,10 +117,11 @@ class UserController extends Controller
         $param =[
             'user'=>$user,
         ];
+        return view('admin.users.profile', $param);
+        
 
 
         // $productshow-> show();
-        return view('users.index', $param);
     }
 
     /**
@@ -169,7 +170,7 @@ class UserController extends Controller
             'message' => 'Chỉnh Sửa Thành Công!',
             'alert-type' => 'success'
         ];
-        alert()->success('Cập nhật nhân viên thành công!');
+        alert()->success('Cập nhật thành công!');
         return redirect()->route('user.index')->with($notification);
     }
     /**

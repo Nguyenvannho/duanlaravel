@@ -30,7 +30,7 @@
               </div >
               <div class="col-12">
                 <label class="form-label">Số lượng</label>
-                <input type="text" class="form-control" value="{{$products->amount}}" name="amount" >
+                <input type="text" class="form-control" value="{{$products->quantity}}" name="quantity" >
               </div >
               <div class="col-12">
                 <label class="form-label">Mô tả</label>

@@ -49,7 +49,7 @@
           @endforeach
         </tbody>
       </table>
-      {{$items->appends(request()->query())}}
+      {{-- {{$items->appends(request()->query())}} --}}
 
 </main>
 </div>

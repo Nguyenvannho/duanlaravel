@@ -146,6 +146,7 @@ button:hover {
           <br>
           <button class="log-in">Đăng nhập</button>
        </div>
+     
        <div class="other">
           <button class="btn submits frgt-pass">Quên mật khẩu?</button>
               <a href="{{route('shop.register')}}">Đăng kí</a>

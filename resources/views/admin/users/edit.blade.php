@@ -140,12 +140,13 @@
                                                     <br>
                                                 </div>
                                             </div>
-
                                         </div>
                                         <div class="form-actions">
                                             <br><br><br><br>
-                                            <button class="w3-button w3-blue" type="submit">Lưu thay đổi</button>
-                                            <a class="w3-button w3-red" href="{{ route('user.index') }}">Hủy</a>
+                                            <button class="btn btn-success" type="submit">Lưu thay đổi</button>
+                                            <a class="btn btn-danger" href="{{ route('user.index') }}">Hủy bỏ</a>
+                                            
+                                            
                                         </div>
                                     </div>
                             </form>

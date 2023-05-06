@@ -58,7 +58,9 @@
                                     @if (Auth::user()->hasPermission('Product_update'))
                                     <a class="btn btn-success" href="{{ route('product.edit', $team->id) }}" class="btn btn-primary">Sửa</a>
                                     @endif
+                                    @if (Auth::user()->hasPermission('Product_view'))
                                     <a class="btn btn-success" href="{{ route('product.show',$team->id) }}"class="btn btn-primary">Chi tiết</a>
+                                    @endif
                                     @if (Auth::user()->hasPermission('Product_delete'))
                                      <button type="submit" class="btn btn-danger"
                                     onclick="return confirm('Bạn có muốn xóa')">Xóa</button>

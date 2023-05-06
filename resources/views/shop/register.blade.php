@@ -1,3 +1,5 @@
+@include('sweetalert::alert')
+
 <style>
     /* Fonts Form Google Font ::- https://fonts.google.com/  -:: */
 @import url('https://fonts.googleapis.com/css?family=Abel%7CAbril+Fatface%7CAlegreya%7CArima+Madurai%7CDancing+Script%7CDosis%7CMerriweather%7COleo+Script%7COverlock%7CPT+Serif%7CPacifico%7CPlayball%7CPlayfair+Display%7CShare%7CUnica+One%7CVibur');

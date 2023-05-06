@@ -18,10 +18,12 @@
                 <label class="form-label">Tên</label>
                 <input type="text" class="form-control" value="{{$categories->name}}" name="name" >
             
-              </div >
+              </div > 
              <div class="col-12">
-               <div class="d-grid">
-                 <button class="btn btn-primary" type="submit">Cập nhật thể loại</button>
+               <div class="d-grid"> <br>
+                 <button class="btn btn-primary" type="submit">Cập nhật thể loại</button> 
+             <a href="{{ route('category.index') }}" class="btn btn-primary">Quay lại</a>
+
 
                </div>
              </div>

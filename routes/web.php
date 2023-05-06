@@ -28,6 +28,9 @@ Route::get('home',function(){
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/checkLogin', [AuthController::class, 'postLogin'])->name('checkLogin');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// quên mật khẩu gửi đến mail
+Route::get('/forgot_password', [AuthController::class, 'forgot_password'])->name('forgot_password');
+Route::post('/post_forgot_password', [AuthController::class, 'post_forgot_password'])->name('post_forgot_password');
 Route::prefix('/')->middleware(['auth', 'preventBackHistory'])->group(function () {
     Route::prefix('category')->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('category.index');
@@ -92,6 +95,7 @@ Route::prefix('/')->middleware(['auth', 'preventBackHistory'])->group(function (
         Route::put('/update/{id}', [UserController::class, 'update'])->name('user.update');
         Route::delete('/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
         Route::get('/search', [UserController::class, 'search'])->name('user.search');
+        Route::get('/show{id}', [UserController::class, 'show'])->name('user.show');
     });
     Route::prefix('order')->group(function () {
         Route::get('/', [OrderController::class, 'index'])->name('order.index');
@@ -119,5 +123,6 @@ Route::prefix('shop')->group(function () {
     Route::post('/checkregister', [ShopController::class, 'checkregister'])->name('shop.checkregister');
     //đăng xuất shop
     Route::post('/logout', [ShopController::class, 'logout'])->name('shop.logout');
+    Route::post('/email', [ShopController::class, 'quenmatkhau'])->name('quenmatkhau');
     
 });

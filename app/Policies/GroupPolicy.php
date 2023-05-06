@@ -11,7 +11,7 @@ class GroupPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user,Group $group)
     {
         return $user->hasPermission('Group_viewAny');
     }

@@ -42,7 +42,7 @@
     <!-- Navbar End -->
 
 
-@yield('content')
+    @yield('content')
 
 
 

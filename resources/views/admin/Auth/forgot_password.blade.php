@@ -45,49 +45,25 @@ height: 100%;
           class="img-fluid" alt="Sample image">
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-          <form method="post" action="{{ route('checkLogin') }}">
+          <form method="post" action="{{ route('post_forgot_password') }}">
             @method('POST')
             @csrf
             <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-              <p  class="lead fw-normal mb-0 me-3">Đăng Nhập</p>
              
             </div><br>
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <input type="email" id="form3Example3" class="form-control form-control-lg"
-                placeholder="Nhập Tài Khoản" name="email" value="{{ old('email') }}" />
               <label class="form-label" for="form3Example3">Tài Khoản</label>
+
+              <input type="email" id="form3Example3" class="form-control form-control-lg"
+                placeholder="Nhập email" name="email" value="{{ old('email') }}" />
               @error('email')
               <div class="alert alert-danger">{{ $message }}</div>
           @enderror
             </div>
-  
-            <!-- Password input -->
-            <div class="form-outline mb-3">
-              <input type="password" id="form3Example4" class="form-control form-control-lg"
-                placeholder="Nhập Mật Khẩu" name="password"/>
-              <label class="form-label" for="form3Example4">Mật Khẩu</label>
-              @error('password')
-              <div class="alert alert-danger">{{ $message }}</div>
-          @enderror
-            </div>
-  
-            <div class="d-flex justify-content-between align-items-center">
-              <!-- Checkbox -->
-              <div class="form-check mb-0">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                <label class="form-check-label" for="form2Example3">
-                  Nhớ Tài khoản
-                </label>
-              </div>
-              <a href="{{route('forgot_password')}}" class="text-body">Quên Mật Khẩu?</a>
-            </div>
-  
-            <div class="text-center text-lg-start mt-4 pt-2">
-              
-              <button type="submit" class="btn btn-primary btn-lg"
-                style="padding-left: 2.5rem; padding-right: 2.5rem;">Đăng Nhập</button>
-              <p class="small fw-bold mt-2 pt-1 mb-0">Không Có Tài Khoản?</p>
+       <div class="text-center text-lg-start mt-4 pt-2">            
+           <a href="{{route('login')}}"><button type="submit" class="btn btn-primary btn-lg"
+                  style="padding-left: 2.5rem; padding-right: 2.5rem;">Lấy lại mật khẩu</button></a>
             </div>
   
           </form>
@@ -96,6 +72,5 @@ height: 100%;
     </div>
    
   </section>
-  
 </body>
 </html>
