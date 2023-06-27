@@ -143,7 +143,8 @@
                                             <div class="form-actions">
                                                 <br><br><br><br>
                                                 <button class="btn btn-primary" type="submit">Đăng ký</button>
-                                                <a class="btn btn-danger" href="{{ route('user.index') }}">Hủy bỏ</a>
+                                                <a class="btn btn-danger" href="{{ route('user.index') }}">Hủy bỏ
+                                                </a>
 
                                             </div>
                                         </div>

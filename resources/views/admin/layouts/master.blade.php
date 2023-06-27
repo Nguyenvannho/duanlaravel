@@ -72,7 +72,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true"></span>
                     </button>
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
@@ -85,7 +85,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae cursus ligula ('admin/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{ asset('admin/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{ asset ('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->

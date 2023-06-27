@@ -31,6 +31,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // quên mật khẩu gửi đến mail
 Route::get('/forgot_password', [AuthController::class, 'forgot_password'])->name('forgot_password');
 Route::post('/post_forgot_password', [AuthController::class, 'post_forgot_password'])->name('post_forgot_password');
+
 Route::prefix('/')->middleware(['auth', 'preventBackHistory'])->group(function () {
     Route::prefix('category')->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('category.index');
